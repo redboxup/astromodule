@@ -3,16 +3,22 @@
 #program to test out how to spit labels to clusters of information
 
 from astromodule import *
+df = pd.read_csv("./database/m67_final.csv",
+	usecols=['ra','dec','pmra','pmdec',
+	'parallax','phot_g_mean_mag','bp_rp','dr2_radial_velocity'])
 
 #creating a dataframe to plot the propermotion of the stars in field of view
-df0 = pd.read_csv("./database/m67_final.csv",usecols =['pmra','pmdec'])
+df0 = df.drop(columns=
+	['ra','dec','parallax','bp_rp','phot_g_mean_mag','dr2_radial_velocity'])
+
 df0 = df0.dropna()
 
 #running gmm and plot the results 
 index = gmm_(df0,3)
 
 #creating a dataframe to plot the vector plot diagrams 
-df1 = pd.read_csv('./database/m67_final.csv',usecols =['ra','dec','pmra','pmdec'])
+df1 = df.drop(columns=
+	['parallax','bp_rp','phot_g_mean_mag','dr2_radial_velocity'])
 df1 = df1.dropna()
 
 #filtering out the stars that belong to the cluster using indices
@@ -25,7 +31,8 @@ plt.show()
 
 
 #creating a dataframe for creating a color magnitude diagram
-df3 = pd.read_csv("./database/m67_final.csv",usecols=['ra','dec','pmra','pmdec','parallax','phot_g_mean_mag','bp_rp'])
+df3 =df.drop(columns=
+	['dr2_radial_velocity']) 
 df3 = df3.dropna()
 df3_index = df3.index.tolist()
 
@@ -38,7 +45,6 @@ df4 = filter_cluster(df3,mod_index)
 #now we output the data to a csv file
 print('data has been outputed to cmd_data_m67.csv')
 df4.to_csv('./output/cmd_data_m67.csv') 
-
 
 
 
