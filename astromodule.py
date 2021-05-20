@@ -109,6 +109,7 @@ def galactic_velocities(df):
 	l = len(df.ra)
 	c = [0]*l
 	gc = [0]*l
+	print('galactic velocity coordinates have been written')
 	sys.stdout = open("./output/galactic_vel_coordinates.dat","w")
 	for i in range(0, l):
 		j = df.index[i]
@@ -123,8 +124,7 @@ def galactic_velocities(df):
 		
 		print(gc[i].v_x,gc[i].v_y,gc[i].v_z)
 	sys.stdout.close()
-	print('galactic velocity coordinates have been written to a .dat file')
-
+	
 
 #Now we will drop the rows that do not have the index in the list index
 def filter_cluster(df,index):
@@ -133,6 +133,22 @@ def filter_cluster(df,index):
 	df2 = df.drop(temp_arr)
 	return df2
 
+
+
+
+
+#using plot_cmd function to plot the color magnitude diagram 
+def plot_cmd(df,xl,yl,xm,ym):
+	y = df.phot_g_mean_mag.tolist()
+	x = df.bp_rp.tolist()
+	plt.plot(x,y, 'ro',markersize = 0.5,alpha =0.5)
+	plt.ylabel ('$Absolute Magnitude(g)$')
+	plt.xlabel ('$Color (bp-rp)$')
+	plt.xlim([xl,xm])
+	plt.ylim([yl,ym])	
+	plt.gca().invert_yaxis()
+	plt.title('Colour Magnitude Diagram')
+	plt.show()
 
 
 
