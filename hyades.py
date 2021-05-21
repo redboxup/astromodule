@@ -26,7 +26,7 @@ d = d.to_value()
 df1['distance']=d
 
 #now removing all the rows with a distance >100 pc
-df1 = df1.drop(df1[df1.distance >100].index)
+df1 = df1.drop(df1[df1.distance >75].index)
 #print(df1)
 
 
