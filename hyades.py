@@ -27,7 +27,7 @@ df1['distance']=d
 
 #now removing all the rows with a distance >100 pc
 df1 = df1.drop(df1[df1.distance >100].index)
-print(df1)
+#print(df1)
 
 
 #plotting the pmra and pmdec without performing gmm
@@ -61,7 +61,21 @@ ax = plt.subplot()
 ax.quiver(df3.ra, df3.dec,df3.pmra,df3.pmdec,scale = 1000,color='k')
 plt.show()
 
+#creating a dataframe for creating a color magnitude diagram
+df3 =df.drop(columns=
+	['dr2_radial_velocity']) 
+df3 = df3.dropna()
+df3_index = df3.index.tolist()
 
+#removing indices with no corresponding radial velocites
+mod_index = list(set(df3_index).intersection(index))
+
+#filtering out the stars that belong to the cluster using indices 
+df4 = filter_cluster(df3,mod_index)
+
+#now we output the data to a csv file
+print('data has been outputed to cmd_data_hyades.csv')
+df4.to_csv('./output/cmd_data_hyades.csv') 
 
 
 
