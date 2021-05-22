@@ -26,7 +26,7 @@ d = d.to_value()
 df1['distance']=d
 
 #now removing all the rows with a distance >100 pc
-df1 = df1.drop(df1[df1.distance >75].index)
+df1 = df1.drop(df1[df1.distance >100].index)
 #print(df1)
 
 
@@ -39,24 +39,11 @@ def plot_pm(df):
 #plot_pm(df1)
 
 df2 = df1.drop(columns = ['parallax','distance','ra','dec'])
-
-#To run gaussian mixture model on the data
-def gmm_(df,n_components):
-	X = df.to_numpy()
-	gmm = mixture.GaussianMixture(n_components, covariance_type='full').fit(X)
-	plot_results(X, gmm.predict(X), gmm.means_, gmm.covariances_,
-		     'Gaussian Mixture')
-	labels = gmm.predict(X)
-	
-	plt.show()
-	final_index = user_select(df,labels)
-	return final_index 	
-
-
 index = gmm_(df2,2)
-
+#filtering and using the stars that were selected
 df3 = filter_cluster(df1,index)
 
+#plotting the vector plot diagram for the given star cluster
 ax = plt.subplot()
 ax.quiver(df3.ra, df3.dec,df3.pmra,df3.pmdec,scale = 1000,color='k')
 plt.show()
