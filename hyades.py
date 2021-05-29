@@ -27,21 +27,14 @@ df1['distance']=d
 
 #now removing all the rows with a distance >100 pc
 df1 = df1.drop(df1[df1.distance >100].index)
-#print(df1)
-
-
-#plotting the pmra and pmdec without performing gmm
-def plot_pm(df):
-	y = df.pmdec.tolist()
-	x = df.pmra.tolist()
-	plt.plot(x,y, 'ro',markersize = 0.5,alpha =0.5)
-	plt.show()
-#plot_pm(df1)
-
 df2 = df1.drop(columns = ['parallax','distance','ra','dec'])
+
+#running the gmm algorithm
 index = gmm_(df2,2)
+
 #filtering and using the stars that were selected
 df3 = filter_cluster(df1,index)
+
 
 #plotting the vector plot diagram for the given star cluster
 ax = plt.subplot()
