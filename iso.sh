@@ -1,6 +1,6 @@
 #! /bin/bash
 #opening the proper directory
-cd ~/Desktop/git/astromodule/fortran
+cd fortran
 
 mkdir iso_temp
 

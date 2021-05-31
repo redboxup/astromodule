@@ -60,7 +60,8 @@ ebv = sys.argv[2]	#ebv = 0.04
 age= sys.argv[3]	#age = 4
 distance = sys.argv[4]	#distance = 851
 isochrone_plot(y,afe,int(feh),float(ebv),float(age),float(distance))
-plt.pause(2)
+plt.pause(5)
+
 #var = 1
 #while var ==1:
 	
