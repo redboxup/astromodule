@@ -7,6 +7,8 @@ import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import sys
+import os
+import subprocess as sb
 
 from sklearn import mixture
 from pandas import DataFrame
@@ -152,6 +154,63 @@ def plot_cmd(df,xl,yl,xm,ym):
 
 
 
+#obtain the relevant isochrone in a dataframe
+
+def isochrone_(y,afe,feh,age):
+	#running the bash script to run the fortran programs
+	rc = sb.check_call(['./iso.sh', '16',str(y),str(afe),str(feh)])
+
+	#read text file
+	arr = os.listdir('./fortran/iso_temp')
+	arr.sort()
+	#print('The range of age is as follows')
+	#print(arr[0],arr[-3])
+	#print('\n')
+
+	#now we create a file name
+	def filename_gen(age):
+		age = float(age)
+		age = age*1000
+		age = int(age)
+		if age > 10000:
+			age = str(age)
+		else:
+			age = str(age)
+			age = '0' + age
+		filename = 'a'+age+'main'
+		return filename 
+
+	file = filename_gen(age)
+	if file in  arr:
+		print('age is available')
+	else:
+		print('age unavailable')
+		exit()
+
+	#now we load the isochrone using numpy 
+	fname = './fortran/iso_temp/'+file
+	dtype_ = np.dtype([('EEP','i4'),('M/Mo', 'f4'),('logTeff','f4'),
+		('LogG','f4'),('LogL/Lo','f4'),('Gaia_G','f4'),
+		('Gaia_BP','f4'),('Gaia_RP','f4')])
+	arr = np.loadtxt(fname ,dtype =dtype_,skiprows=9)
+
+	#converting to dataframe 
+	df = pd.DataFrame(arr)
+	#print(df)
+
+	#Extracting the data in headers
+	with open(fname) as myfile:
+	    head = [next(myfile) for x in range(9)]
+	a=head[3]
+	a = a.split()
+	data = [[float(a[1]),float(a[2]),float(a[3]),
+		float(a[4]),float(a[5]),float(a[6])]]
+	cols = ['M_L','Y','Z','Zeff','FeH','aFe']
+	df_h = pd.DataFrame(data,columns = cols)
+
+	#removing the temporary file created during the process
+	sb.check_call(["rm","-rf","./fortran/iso_temp"])
+	return df,df_h
 
 
 

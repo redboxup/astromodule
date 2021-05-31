@@ -65,7 +65,7 @@
      >     newg,newl,newclr(maxcol),y(niso),z(niso),zeff(niso),newxeff,
      >     afe(niso),newzeff,newz,newy,newfeh0,feh0(nz1),feh(niso)
       logical :: lquiet = .false.
-
+      outfile = "./iso_temp/main"
       iso_dir = 'isochrones/'
       !iso_dir = 'isochrones/'
       feh0=(/-2.5d0,-2.0d0,-1.5d0,-1.0d0,-0.5d0,0.0d0,0.3d0,0.5d0/)
@@ -100,7 +100,7 @@
          call getarg(4,arg)
          read(arg,*) newfeh
          newfeh=newfeh*1d0
-         call getarg(5,outfile)
+!         call getarg(5,outfile)
 
       else
 ! run interactively
@@ -168,10 +168,10 @@
       write(*,*) ' Enter new [Fe/H] to interpolate:'
       read  *, newfeh
 
-      write(*,*) '-----------------------------------------------'
-      write(*,*) ' Enter new filename:'
-      read(*,'(a)') outfile
-      write(*,*) '-----------------------------------------------'
+!      write(*,*) '-----------------------------------------------'
+!      write(*,*) ' Enter new filename:'
+!      read(*,'(a)') outfile
+!      write(*,*) '-----------------------------------------------'
 
       endif !if(IargC()...
 

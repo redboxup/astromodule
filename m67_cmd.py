@@ -19,42 +19,51 @@ def plot_cmd(df):
 #	plt.xlim([xl,xm])
 #	plt.ylim([yl,ym])	
 	plt.gca().invert_yaxis()
-	plt.title('Colour Magnitude Diagram')
+	plt.title('Isochrone fitting')
 
-#using plot_cmd function to plot the color magnitude diagram 
-df0 = pd.read_csv("isochrone.csv")
-color = df0.Gaia_BP - df0.Gaia_RP
-plot_cmd(df)
-#plt.plot( color.tolist(),df0.Gaia_BP.tolist())
+#writing a function that will be repeated mutiple times
 
 
+def isochrone_plot(y,afe,feh,ebv,age,distance):
+	#using plot_cmd function to plot the color magnitude diagram 
+	df0,df0_h = isochrone_(y,afe,feh,age)
+	color = df0.Gaia_BP - df0.Gaia_RP
+	plot_cmd(df)
 
-#write a function to perform isochrone fitting on the above cmd
-distance = 908
-distance_modulus = 5*np.log10(distance/10)
-#print ('dm = {}'.format(distance_modulus))
-model_bp = df0.Gaia_BP.tolist()
-
-model_bp = model_bp + distance_modulus
-#plt.plot( color.tolist(),model_bp,'g')
-
-
-
-#improving for extinction and reddening 
-#ebv is reddening 
-ebv = 0.041
-#av = extinction 
-av =3.2*ebv
-
-model_bp = model_bp + av
-#color = color.tolist()
-color = color +ebv
-plt.plot( color,model_bp)
+	#write a function to perform isochrone fitting on the above cmd
+	distance_modulus = 5*np.log10(distance/10)
+	print ('dm = {}'.format(distance_modulus))
+	print ('age = {}'.format(age))
+	print(df0_h)
+	model_bp = df0.Gaia_BP.tolist()
+	model_g  = df0.Gaia_G.tolist()
+	model_bp = model_bp + distance_modulus
+	model_g = model_g + distance_modulus
 
 
-plt.show()
+	#taking into consideration extinction and reddening 
+	#ebv is reddening 
+#	ebv = 0.04
+	#av is extinction 
+	av =3.2*ebv
+
+	model_g = model_g +av
+	model_bp = model_bp + av
+	color = color +ebv
+	plt.plot( color,model_g)
 
 
+y = 1
+afe = 2
+feh = sys.argv[1]	#feh = 0
+ebv = sys.argv[2]	#ebv = 0.04	
+age= sys.argv[3]	#age = 4
+distance = sys.argv[4]	#distance = 851
+isochrone_plot(y,afe,int(feh),float(ebv),float(age),float(distance))
+plt.pause(2)
+#var = 1
+#while var ==1:
+	
 
 
 
