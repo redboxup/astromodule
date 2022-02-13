@@ -6,7 +6,9 @@ We performed Astrometric Analysis on Open Star clusters to determine parameters 
 
 We chose open clusters M67 & Hyades. We used the data from the Gaia Early Data Release 3 to perform the analysis. 
 
-Python notebook above can be used to look at the summary of the code created
+To get a brief overview of the work done you could look into
+1) hyades.pynb
+2) m67.pynb
 
 
 
