@@ -17,7 +17,7 @@ Gaia is a European space mission providing astrometry, photometry and spectrosco
 We first performed a proper motion analysis. We plot the pmRA along the horizontal axis and pmDEC along the vertical axis. We see a high density clump in the figure. This is indicative of presence of open cluster. We use Gaussian Mean Mixture (GMM) model to select all the stars which most probably belong to the open cluster.
 
 <p align = "center">
-<img src="https://github.com/redboxup/astromodule/blob/main/plots/hyades_gmm_plot.png" width="425"/> <img src="https://github.com/redboxup/astromodule/blob/main/plots/m67_gmm_plot.png" width="415"/> 
+<img src="https://github.com/redboxup/astromodule/blob/main/plots/hyades_gmm_plot.png" width="405"/> <img src="https://github.com/redboxup/astromodule/blob/main/plots/m67_gmm_plot.png" width="395"/> 
 </p>
 
 We can verify that we have members from the open cluster we can plot the stars proper motion as velocities from their positions with RA and DEC as horizontal and veritical axis repectively.
