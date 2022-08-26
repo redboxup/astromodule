@@ -30,7 +30,7 @@ We can verify that we have members from the open cluster we can plot the stars p
 The theoretical isochrones for the cluster are obtained from the 'Dartmouth Stellar Evolution' Database. Based on the best fit curve we can then estimate and predict parameters including age of the cluster, the metallicity of the cluster, distance modulus of the cluster.
 
 <p align = "center">
-<img src="https://github.com/redboxup/astromodule/blob/main/plots/isochrone_hyades" width="395"/> <img src="https://github.com/redboxup/astromodule/blob/main/plots/isochrone_m67.png" width="425"/> 
+<img src="https://github.com/redboxup/astromodule/blob/main/plots/isochrone_hyades.png" width="395"/> <img src="https://github.com/redboxup/astromodule/blob/main/plots/isochrone_m67.png" width="425"/> 
 </p>
 
 
