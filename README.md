@@ -2,20 +2,9 @@
  
 ----------------------------------------------
 
-We performed Astrometric Analysis on Open Star clusters to determine parameters like parallax, propermotion, distance from sun & galactic centre and then determine age of the cluster. 
+## Abstract
 
-We chose open clusters M67 & Hyades. We used the data from the Gaia Early Data Release 3 to perform the analysis. 
-
-
-To get a brief overview of the work done you could look into
-1) hyades.ipynb
-2) m67.ipynb
-
-It includes all the plots
-
-
-
-
+The primary objective of the project was to study and identify the astrometric paprameters of M67 and Hyades open cluster, using data provided by ESO Gaia Survey in Early Data Relase 3 (EDR3). Firstly, most probable members of the respective open clusters were identified by proper motion analysis. Next, the Colour Magnitude Diagram (CMD) of the cluster is created. Then a theoretical isochrone curve is fitted to determine important astrometric parameters of the cluster.  
 
 
 
