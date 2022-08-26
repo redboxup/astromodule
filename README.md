@@ -12,7 +12,7 @@ The primary objective of the project was to study and identify the astrometric p
 ### Collection of Data
 Gaia is a European space mission providing astrometry, photometry and spectroscopy for more than 1 billion stars in the Milky Way. We can get the information of all the stars lying within radius of some arc seconds with center at the specified right ascension (RA) and declination (DEC). Since M67 and Hyades are well known open clusters the RA and DEC of centers of open clusters were known. 
 
-## Proper Motion Analysis
+### Proper Motion Analysis
 
 We first performed a proper motion analysis. We plot the pmRA along the horizontal axis and pmDEC along the vertical axis. We see a high density clump in the figure. This is indicative of presence of open cluster. We use Gaussian Mean Mixture (GMM) model to select all the stars which most probably belong to the open cluster.
 
@@ -26,14 +26,15 @@ We can verify that we have members from the open cluster we can plot the stars p
 <img src="https://github.com/redboxup/astromodule/blob/main/plots/pm_plot_hyades.png" width="395"/> <img src="https://github.com/redboxup/astromodule/blob/main/plots/pm_m67.png" width="425"/> 
 </p>
 
-## Colour Magnitude Diagram (CMD) & Isochrone fitting
+### Colour Magnitude Diagram (CMD) & Isochrone fitting
 The theoretical isochrones for the cluster are obtained from the 'Dartmouth Stellar Evolution' Database. Based on the best fit curve we can then estimate and predict parameters including age of the cluster, the metallicity of the cluster, distance modulus of the cluster.
 
 <p align = "center">
 <img src="https://github.com/redboxup/astromodule/blob/main/plots/isochrone_hyades.png" width="425"/> <img src="https://github.com/redboxup/astromodule/blob/main/plots/isochrone_m67.png" width="420"/> 
 </p>
 
-
+## Outcome and Learning
+The project introduced to me to how research is done in astronomy and phyiscs. I learnt how to read scientific papers and journals and extract the information we need. I also got a familiarity with the various tools and frameworks used in simulation based physics. 
 
 
 
