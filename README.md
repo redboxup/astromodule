@@ -23,7 +23,7 @@ We first performed a proper motion analysis. We plot the pmRA along the horizont
 We can verify that we have members from the open cluster we can plot the stars proper motion as velocities from their positions with RA and DEC as horizontal and veritical axis repectively.
 
 <p align = "center">
-<img src="https://github.com/redboxup/astromodule/blob/main/plots/pm_plot_hyades.png" width="425"/> <img src="https://github.com/redboxup/astromodule/blob/main/plots/pm_m67.png" width="415"/> 
+<img src="https://github.com/redboxup/astromodule/blob/main/plots/pm_plot_hyades.png" width="425"/> <img src="https://github.com/redboxup/astromodule/blob/main/plots/pm_m67.png" width="435"/> 
 </p>
 
 
